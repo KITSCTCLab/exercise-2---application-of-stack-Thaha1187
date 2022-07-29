@@ -44,10 +44,11 @@ class Evaluate:
       The data which is popped out if the stack is not empty.
     """
     # Write your code here
-    if self.top == -1:
-       return 1
-    else :
-       return 0
+    if not self.isEmpty():
+      z=self.lst[self.top]
+      del self.lst[self.top]
+      self.top-=1
+      return z
 
   def push(self, operand):
     """
@@ -102,7 +103,7 @@ class Evaluate:
           self.push(str(eval(var_2 + i*2 + var_1)))
         else:
           self.push(str(eval(var_2 + i + var_1)))
-      return self.pop()
+    return self.pop()
 
 
 # Do not change the following code
