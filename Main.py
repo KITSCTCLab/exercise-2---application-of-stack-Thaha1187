@@ -73,7 +73,7 @@ class Evaluate:
     if count_1>count_2 and expression[0].isdigit() and expression[1].isdigit():
       return 1
     else:
-      retrn 0
+      return 1
 
 
   def evaluate_postfix_expression(self, expression):
@@ -89,12 +89,12 @@ class Evaluate:
       if i.isdigit():
         self.push(i)
       else:
-        v1 = self.pop()
-        v2 = self.pop()
+        var_1 = self.pop()
+        var_2 = self.pop()
         if i=='/':
-          self.push(str(eval(v2 + i*2 + v1)))
+          self.push(str(eval(var_2 + i*2 + var_1)))
         else:
-          self.push(str(eval(v2 + i + v1)))
+          self.push(str(eval(var_2 + i + var_1)))
     return self.pop()
 
 
@@ -103,6 +103,6 @@ postfix_expression = input()  # Read postfix expression
 tokens = postfix_expression.split()
 evaluate = Evaluate(len(tokens))
 if evaluate.validate_postfix_expression(tokens):
-    print(evaluate.evaluate_postfix_expression(tokens))
+    prin(evaluate.evaluate_postfix_expression(tokens))
 else:
     print('Invalid postfix expression')
