@@ -39,7 +39,7 @@ class Evaluate:
     # Write your code here
     if self.top == -1:
        return 1
-   else :
+    else :
        return 0
 
   def push(self, operand):
@@ -103,6 +103,6 @@ postfix_expression = input()  # Read postfix expression
 tokens = postfix_expression.split()
 evaluate = Evaluate(len(tokens))
 if evaluate.validate_postfix_expression(tokens):
-    prin(evaluate.evaluate_postfix_expression(tokens))
+    print(evaluate.evaluate_postfix_expression(tokens))
 else:
     print('Invalid postfix expression')
