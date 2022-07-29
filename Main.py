@@ -14,8 +14,8 @@ class Evaluate:
       size_of_stack: An integer to set the size of stack.
     """
     self.top = -1
-    self.size_of_stack = size
-    self.stack = []
+    self.size = size
+    self.lst = [None]*size
 
 
   def isEmpty(self):
@@ -24,8 +24,11 @@ class Evaluate:
     Returns:
       True if it is empty, else returns False.
     """
-      # Write your code here
-
+    # Write your code here
+    if self.top == -1:
+       return 1
+    else :
+       return 0
 
   def pop(self):
     """
@@ -34,7 +37,10 @@ class Evaluate:
       The data which is popped out if the stack is not empty.
     """
     # Write your code here
-
+    if self.top == -1:
+       return 1
+   else :
+       return 0
 
   def push(self, operand):
     """
@@ -43,6 +49,9 @@ class Evaluate:
       operand: The operand to be pushed.
     """
     # Write your code here
+    if not self.is_full():
+      self.top+=1
+      self.lst[self.top]=operand
 
 
   def validate_postfix_expression(self, expression):
@@ -54,6 +63,17 @@ class Evaluate:
       True if the expression is valid, else returns False.
     """
     # Write your code here
+    count_1=0
+    count_2=0
+    for i in expression:
+      if i.isdigit():
+        count_1+=1
+      else:
+        count_2+=1
+    if count_1>count_2 and expression[0].isdigit() and expression[1].isdigit():
+      return 1
+    else:
+      retrn 0
 
 
   def evaluate_postfix_expression(self, expression):
@@ -65,6 +85,17 @@ class Evaluate:
       The result of evaluated postfix expression.
     """
     # Write your code here
+    for i in expression:
+      if i.isdigit():
+        self.push(i)
+      else:
+        v1 = self.pop()
+        v2 = self.pop()
+        if i=='/':
+          self.push(str(eval(v2 + i*2 + v1)))
+        else:
+          self.push(str(eval(v2 + i + v1)))
+    return self.pop()
 
 
 # Do not change the following code
